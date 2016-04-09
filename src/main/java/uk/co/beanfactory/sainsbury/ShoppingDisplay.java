@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List of items listed on a display
+ *
  * Created by bill on 09/04/2016.
  */
 public class ShoppingDisplay {
-    List<ShoppingItem> shoppingItems;
+    List<ShoppingItem> results;
 
     public ShoppingDisplay() {
-        this.shoppingItems = new ArrayList<>();
+        this.results = new ArrayList<>();
     }
 
-    public List<ShoppingItem> getShoppingItems() {
-        return shoppingItems;
+    public List<ShoppingItem> getResults() {
+        return results;
     }
 
-    public void setShoppingItems(List<ShoppingItem> shoppingItems) {
-        this.shoppingItems = shoppingItems;
+    public void setResults(List<ShoppingItem> results) {
+        this.results = results;
     }
 
 

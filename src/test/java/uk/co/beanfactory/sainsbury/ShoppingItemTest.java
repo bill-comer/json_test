@@ -1,6 +1,7 @@
 package uk.co.beanfactory.sainsbury;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,7 +85,9 @@ public class ShoppingItemTest {
     public void convertToJson_andBackAgain() {
         ShoppingItem item = ShoppingItem.create(title, size, description, price);
 
-        String gsonItem = new Gson().toJson(item);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String gsonItem = gson.toJson(item);
 
         System.out.println( gsonItem );
 
