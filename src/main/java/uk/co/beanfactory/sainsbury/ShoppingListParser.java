@@ -24,10 +24,23 @@ public class ShoppingListParser {
 
         products.forEach( product -> {
             Double unitPrice = getPriceFromProductClass(product);
+            String title = getTitleFromProductClass(product);
 
         } );
 
         return result;
+    }
+
+    String getTitleFromProductClass(Element product) {
+        final String[] title = {null};
+        Elements productInfo = product.getElementsByClass("productInfo");
+        productInfo.forEach( item -> {
+            if (item.hasText()) {
+                title[0] = item.text();
+            }
+        });
+
+        return title[0];
     }
 
     Double getPriceFromProductClass(Element product) {

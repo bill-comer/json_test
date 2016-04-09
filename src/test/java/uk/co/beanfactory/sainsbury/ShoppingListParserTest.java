@@ -41,6 +41,18 @@ public class ShoppingListParserTest {
     }
 
     @Test
+    public void getTitle() {
+        Document doc = createTestProductDocument();
+        Element product = doc.getElementsByClass("product").first();
+        ShoppingListParser sut = new ShoppingListParser();
+
+        String result = sut.getTitleFromProductClass(product);
+        assertNotNull(result);
+        assertEquals("expected[" + "Sainsbury's Avocado Ripe & Ready XL Loose 300g" + "]", "Sainsbury's Avocado Ripe & Ready XL Loose 300g", result);
+
+    }
+
+    @Test
     public void getPrice() {
 
         Document doc = createTestProductDocument();
