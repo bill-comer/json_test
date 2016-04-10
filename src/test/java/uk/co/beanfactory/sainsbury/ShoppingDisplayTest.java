@@ -33,7 +33,8 @@ public class ShoppingDisplayTest {
         ShoppingItem item1 = ShoppingItem.create(title, size, description, price);
 
         ShoppingDisplay shoppingDisplay = new ShoppingDisplay();
-        shoppingDisplay.getResults().add(item1);
+        shoppingDisplay.addItem(item1);
+        //shoppingDisplay.setTotal(99D);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String gsonItem = gson.toJson(shoppingDisplay);
@@ -42,11 +43,13 @@ public class ShoppingDisplayTest {
 
         ShoppingDisplay convertedDisplay = new Gson().fromJson(gsonItem, ShoppingDisplay.class);
         assertNotNull("could not convert back to ShoppingDisplay", convertedDisplay);
-        assertTrue("there should be some results", convertedDisplay.getResults() != null);
-        assertTrue("there should be one results", convertedDisplay.getResults().size() == 1);
+        assertTrue("there should be some results", convertedDisplay.results != null);
+        assertTrue("there should be one results", convertedDisplay.results.size() == 1);
 
-        ShoppingItem convertedItem = convertedDisplay.getResults().get(0);
+        ShoppingItem convertedItem = convertedDisplay.results.get(0);
         assertTrue("convertedItem should be same as created item" , convertedItem.equals(item1));
+
+        System.out.println(gsonItem);
     }
 
 }

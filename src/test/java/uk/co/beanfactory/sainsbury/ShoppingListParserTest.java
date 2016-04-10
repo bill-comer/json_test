@@ -36,8 +36,8 @@ public class ShoppingListParserTest {
         ShoppingDisplay result = sut.parse(doc);
 
         assertNotNull("no ShoppingDisplay created", result);
-        assertNotNull(result.getResults());
-        assertTrue(" expected more than one  ShoppingItem", result.getResults().size() > 0);
+        assertNotNull(result.results);
+        assertTrue(" expected more than one  ShoppingItem", result.results.size() > 0);
     }
 
 

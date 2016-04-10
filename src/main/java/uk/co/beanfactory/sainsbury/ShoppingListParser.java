@@ -31,7 +31,7 @@ public class ShoppingListParser {
         products.forEach( product -> {
             Double unitPrice = getPriceFromProductClass(product);
             ShoppingItem item = getTitleSizeDescFromProductClass(product, unitPrice);
-            result.getResults().add(item);
+            result.addItem(item);
         } );
 
         return result;
