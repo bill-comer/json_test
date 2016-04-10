@@ -94,6 +94,8 @@ public class ShoppingItemTest {
         ShoppingItem convertedItem = new Gson().fromJson(gsonItem, ShoppingItem.class);
 
         assertTrue("they should be the same", item.equals(convertedItem));
+        assertTrue(gsonItem.contains("\"size\": \"11Kb\""));
+        assertTrue(gsonItem.contains("\"unit_price\": 1.23"));
 
     }
 

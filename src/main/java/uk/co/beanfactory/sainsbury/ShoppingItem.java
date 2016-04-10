@@ -8,7 +8,7 @@ import java.net.URL;
  */
 public class ShoppingItem {
     private String title;
-    private Double unitPrice;
+    private Double unit_price;
     private String description;
     private String size;
 
@@ -37,11 +37,11 @@ public class ShoppingItem {
     }
 
     public Double getUnit_price() {
-        return unitPrice;
+        return unit_price;
     }
 
     public void setUnitPrice(Double unitPrice) {
-        this.unitPrice = unitPrice;
+        this.unit_price = unitPrice;
     }
 
     public static ShoppingItem create(String title, long size, String description, Double unitPrice) {
@@ -49,7 +49,7 @@ public class ShoppingItem {
         item.title = title;
         item.setSize(size);
         item.description = description;
-        item.unitPrice = unitPrice;
+        item.unit_price = unitPrice;
 
         return item;
     }
@@ -63,7 +63,7 @@ public class ShoppingItem {
 
         if (getSize() != item.getSize()) return false;
         if (!getTitle().equals(item.getTitle())) return false;
-        if (!unitPrice.equals(item.unitPrice)) return false;
+        if (!unit_price.equals(item.unit_price)) return false;
         return getDescription().equals(item.getDescription());
 
     }
@@ -71,7 +71,7 @@ public class ShoppingItem {
     @Override
     public int hashCode() {
         int result = getTitle().hashCode();
-        result = 31 * result + unitPrice.hashCode();
+        result = 31 * result + unit_price.hashCode();
         result = 31 * result + getDescription().hashCode();
         result = 31 * result + (int) (getSize() ^ (getSize() >>> 32));
         return result;
@@ -81,7 +81,7 @@ public class ShoppingItem {
     public String toString() {
         return "ShoppingItem{" +
                 "title='" + title + '\'' +
-                ", unitPrice=" + unitPrice +
+                ", unitPrice=" + unit_price +
                 ", description='" + description + '\'' +
                 ", size=" + size +
                 '}';
