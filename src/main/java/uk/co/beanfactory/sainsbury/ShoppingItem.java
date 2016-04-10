@@ -10,7 +10,7 @@ public class ShoppingItem {
     private String title;
     private Double unitPrice;
     private String description;
-    private long size;
+    private String size;
 
     public String getTitle() {
         return title;
@@ -21,11 +21,11 @@ public class ShoppingItem {
     }
 
     public long getSize() {
-        return size;
+        return new Long(size);
     }
 
     public void setSize(long size) {
-        this.size = size;
+        this.size = String.valueOf(size/1000L) + "Kb";
     }
 
     public String getDescription() {
@@ -47,7 +47,7 @@ public class ShoppingItem {
     public static ShoppingItem create(String title, long size, String description, Double unitPrice) {
         ShoppingItem item = new ShoppingItem();
         item.title = title;
-        item.size = size;
+        item.setSize(size);
         item.description = description;
         item.unitPrice = unitPrice;
 
