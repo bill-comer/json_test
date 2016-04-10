@@ -16,14 +16,14 @@ public class ShoppingDisplayTest {
     String title = "foo";
     String description = "foo_desc";
     Double price = 1.23;
-    Double size = 11.2;
+    long size = 11;
 
     @Before
     public void before() {
         title = "foo";
         description = "foo_desc";
         price = 1.23;
-        size = 11.2;
+        size = 11;
 
     }
 

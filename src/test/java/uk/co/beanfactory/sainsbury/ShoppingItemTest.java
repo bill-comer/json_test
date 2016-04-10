@@ -15,19 +15,19 @@ public class ShoppingItemTest {
     String title = "foo";
     String description = "foo_desc";
     Double price = 1.23;
-    Double size = 11.2;
+    long size = 11;
 
     @Before
     public void before() {
         title = "foo";
         description = "foo_desc";
         price = 1.23;
-        size = 11.2;
+        size = 11;
 
     }
 
     /**
-     * tests the {@link ShoppingItem#create(String, Double, String, Double)} process
+     * tests the {@link ShoppingItem#create(String, long, String, Double)} process
      */
     @Test
     public void testCreate() {
@@ -59,7 +59,7 @@ public class ShoppingItemTest {
     @Test
     public void testEquals_difftSize() {
         ShoppingItem item1 = ShoppingItem.create(title, size, description, price);
-        ShoppingItem item2 = ShoppingItem.create(title , new Double(123), description, price);
+        ShoppingItem item2 = ShoppingItem.create(title , 123, description, price);
 
         assertNotEquals("they have difft size", item1.equals(item2));
     }

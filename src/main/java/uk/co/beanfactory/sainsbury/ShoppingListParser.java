@@ -59,7 +59,7 @@ public class ShoppingListParser {
                 size = url.openConnection().getContentLength();
                 description = getDescriptionFrom(url);
 
-                shoppingItem = ShoppingItem.create(title, new Double(size), description, unitPrice);
+                shoppingItem = ShoppingItem.create(title, size, description, unitPrice);
 
 
             } catch (IOException e) {

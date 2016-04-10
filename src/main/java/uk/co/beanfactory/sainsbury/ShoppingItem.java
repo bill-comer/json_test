@@ -10,7 +10,7 @@ public class ShoppingItem {
     private String title;
     private Double unitPrice;
     private String description;
-    private Double size;
+    private long size;
 
     public String getTitle() {
         return title;
@@ -20,11 +20,11 @@ public class ShoppingItem {
         this.title = title;
     }
 
-    public Double getSize() {
+    public long getSize() {
         return size;
     }
 
-    public void setSize(Double size) {
+    public void setSize(long size) {
         this.size = size;
     }
 
@@ -44,7 +44,7 @@ public class ShoppingItem {
         this.unitPrice = unitPrice;
     }
 
-    public static ShoppingItem create(String title, Double size, String description, Double unitPrice) {
+    public static ShoppingItem create(String title, long size, String description, Double unitPrice) {
         ShoppingItem item = new ShoppingItem();
         item.title = title;
         item.size = size;
@@ -61,20 +61,19 @@ public class ShoppingItem {
 
         ShoppingItem item = (ShoppingItem) o;
 
-        if (getTitle() != null ? !getTitle().equals(item.getTitle()) : item.getTitle() != null) return false;
-        if (unitPrice != null ? !unitPrice.equals(item.unitPrice) : item.unitPrice != null) return false;
-        if (getDescription() != null ? !getDescription().equals(item.getDescription()) : item.getDescription() != null)
-            return false;
-        return getSize() != null ? getSize().equals(item.getSize()) : item.getSize() == null;
+        if (getSize() != item.getSize()) return false;
+        if (!getTitle().equals(item.getTitle())) return false;
+        if (!unitPrice.equals(item.unitPrice)) return false;
+        return getDescription().equals(item.getDescription());
 
     }
 
     @Override
     public int hashCode() {
-        int result = getTitle() != null ? getTitle().hashCode() : 0;
-        result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getSize() != null ? getSize().hashCode() : 0);
+        int result = getTitle().hashCode();
+        result = 31 * result + unitPrice.hashCode();
+        result = 31 * result + getDescription().hashCode();
+        result = 31 * result + (int) (getSize() ^ (getSize() >>> 32));
         return result;
     }
 
