@@ -21,7 +21,7 @@ public class ShoppingItem {
     }
 
     public long getSize() {
-        return new Long(size);
+        return new Long(size.replaceAll("\\D+", ""));
     }
 
     public void setSize(long size) {

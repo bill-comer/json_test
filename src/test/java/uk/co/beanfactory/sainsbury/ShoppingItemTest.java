@@ -15,14 +15,14 @@ public class ShoppingItemTest {
     String title = "foo";
     String description = "foo_desc";
     Double price = 1.23;
-    long size = 11;
+    long size = 11000;
 
     @Before
     public void before() {
         title = "foo";
         description = "foo_desc";
         price = 1.23;
-        size = 11;
+        size = 11000;
 
     }
 
@@ -36,7 +36,7 @@ public class ShoppingItemTest {
 
         assertNotNull("no item generated", item);
         assertEquals("title should be 'foo'",title, item.getTitle());
-        assertEquals("size should be " + size,size, item.getSize());
+        assertEquals("size should be " + size/1000,size/1000, item.getSize());
         assertEquals("unitPrice should be " + price,price, item.getUnit_price());
     }
 
