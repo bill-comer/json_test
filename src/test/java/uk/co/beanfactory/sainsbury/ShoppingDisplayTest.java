@@ -36,7 +36,10 @@ public class ShoppingDisplayTest {
         shoppingDisplay.addItem(item1);
         //shoppingDisplay.setTotal(99D);
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+               // .registerTypeAdapter(ShoppingDisplay.class, new ShoppingDisplayDeserializer())
+                .create();
         String gsonItem = gson.toJson(shoppingDisplay);
 
         assertTrue(gsonItem.contains("results"));
