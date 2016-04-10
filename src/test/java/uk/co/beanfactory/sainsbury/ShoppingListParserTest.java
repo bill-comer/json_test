@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -28,9 +27,10 @@ public class ShoppingListParserTest {
     }
 
 
+
     @Test
     public void getShoppingList() {
-        Document doc = getTestFileDoc();
+        Document doc = getTestFileProductDoc();
 
         ShoppingListParser sut = new ShoppingListParser();
         ShoppingDisplay result = sut.parse(doc);
@@ -40,15 +40,17 @@ public class ShoppingListParserTest {
         assertTrue(" expected more than one  ShoppingItem", result.getResults().size() > 0);
     }
 
+
+
     @Test
     public void getTitle() {
         Document doc = createTestProductDocument();
         Element product = doc.getElementsByClass("product").first();
         ShoppingListParser sut = new ShoppingListParser();
 
-        String result = sut.getTitleFromProductClass(product);
+        ShoppingItem result = sut.getTitleSizeDescFromProductClass(product, 1.1);
         assertNotNull(result);
-        assertEquals("expected[" + "Sainsbury's Avocado Ripe & Ready XL Loose 300g" + "]", "Sainsbury's Avocado Ripe & Ready XL Loose 300g", result);
+        assertEquals("expected[" + "Sainsbury's Avocado Ripe & Ready XL Loose 300g" + "]", "Sainsbury's Avocado Ripe & Ready XL Loose 300g", result.getTitle());
 
     }
 
@@ -63,6 +65,17 @@ public class ShoppingListParserTest {
 
         assertNotNull(result);
         assertEquals("", new Double(1.5), result);
+    }
+
+    @Test
+    public void getDescription() {
+
+        ShoppingListParser sut = new ShoppingListParser();
+        sut.useTestFile = true;
+        String result = sut.getDescriptionFrom(null);
+
+        assertEquals("Avocados", result);
+
     }
 
     private Document createTestProductDocument() {
@@ -164,12 +177,23 @@ public class ShoppingListParserTest {
                 "        \t</div> ");
     }
 
-    private Document getTestFileDoc() { String sainsburyHtmlFileName = "sainsbury.html";
+
+    private Document getTestFileProductDoc() {
+        String sainsburyHtmlFileName = "sainsbury.html";
+        return getTestFileDoc(sainsburyHtmlFileName);
+    }
+
+    private Document getTestFileProductInfoDoc() {
+        String sainsburyHtmlFileName = "sainsburyProductInfo.html";
+        return getTestFileDoc(sainsburyHtmlFileName);
+    }
+
+    private Document getTestFileDoc(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
 
-        assertNotNull("classloader can not see file", classLoader.getResource(sainsburyHtmlFileName));
+        assertNotNull("classloader can not see file", classLoader.getResource(fileName));
 
-        File file = new File(classLoader.getResource(sainsburyHtmlFileName).getFile());
+        File file = new File(classLoader.getResource(fileName).getFile());
         assertTrue("can not see file", file.exists());
 
         Document doc = null;

@@ -4,6 +4,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
@@ -13,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 public class ShoppingDisplayListerTest {
 
     @Test
-    public void testGetFile() {
+    public void testGetFile() throws IOException {
         ShoppingDisplayLister sut = new ShoppingDisplayLister();
         Document doc = sut.getDocument(null, true);
 

@@ -1,5 +1,7 @@
 package uk.co.beanfactory.sainsbury;
 
+import java.io.IOException;
+
 /**
  * Created by bill on 09/04/2016.
  */
@@ -10,10 +12,14 @@ public class SainsburyDemo {
     public static void main(String[] args) {
 
         String url = DEFAULT_URL;
-        boolean useFile = true;
+        boolean useTestFile = true;
 
         ShoppingDisplayLister shoppingDisplayLister = new ShoppingDisplayLister();
-        shoppingDisplayLister.listItems(url, useFile);
+        try {
+            shoppingDisplayLister.listItems(url, useTestFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
