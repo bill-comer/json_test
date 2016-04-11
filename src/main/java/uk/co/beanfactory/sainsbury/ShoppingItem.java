@@ -37,7 +37,7 @@ public class ShoppingItem {
         this.description = description;
     }
 
-    public BigDecimal getUnit_price() {
+    public BigDecimal getUnitPrice() {
         return unit_price;
     }
 

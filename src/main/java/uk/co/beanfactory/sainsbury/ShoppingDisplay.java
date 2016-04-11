@@ -26,7 +26,7 @@ public class ShoppingDisplay {
 
     public void addItem(ShoppingItem item) {
         results.add(item);
-        total = total.add(item.getUnit_price());
+        total = total.add(item.getUnitPrice());
     }
 
 

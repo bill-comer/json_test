@@ -39,7 +39,7 @@ public class ShoppingItemTest {
         assertNotNull("no item generated", item);
         assertEquals("title should be 'foo'",title, item.getTitle());
         assertEquals("size should be " + size/1000,size/1000, item.getSize());
-        assertEquals("unitPrice should be " + price,price, item.getUnit_price());
+        assertEquals("unitPrice should be " + price,price, item.getUnitPrice());
     }
 
     @Test
