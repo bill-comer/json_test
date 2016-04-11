@@ -17,4 +17,4 @@ All other dependancies are contained within the created executable jar
    
 - to execute the program
         but override the URL with 'http://foo.html'
-    * java -cp "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar" http://foo.html
+    * java -cp "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar" -url=http://foo.html
