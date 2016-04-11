@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * List of all the items visible from a URL
  * Created by bill on 09/04/2016.
  */
 public class ShoppingDisplay {
@@ -18,7 +18,12 @@ public class ShoppingDisplay {
         total = BigDecimal.ZERO;
     }
 
-    public void addItem(ShoppingItem item) {
+  /**
+   * Adds an item to the list & increases the total appropiately.
+   *
+   * @param item
+   */
+  public void addItem(ShoppingItem item) {
         results.add(item);
         total = total.add(item.getUnitPrice());
     }

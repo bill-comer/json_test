@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 
 /**
- * Details of an indevidual item from a store display
+ * Details of an individual item from a store display
  * Created by bill on 09/04/2016.
  */
 public class ShoppingItem {

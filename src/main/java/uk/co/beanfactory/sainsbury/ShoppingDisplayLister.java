@@ -33,7 +33,7 @@ public class ShoppingDisplayLister {
     }
 
     /**
-     *
+     * Gets a Document from the URL or from a test file if useFile == true
      * @param url
      * @param useFile test facility - grabs local copy of a shopping web page
      * @return

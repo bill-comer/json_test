@@ -13,6 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * retrives a ShoppingDisplay listing all the items visible
+ *
  * Created by bill on 09/04/2016.
  */
 public class ShoppingListParser {
@@ -28,6 +30,11 @@ public class ShoppingListParser {
     public static final String DESCRIPTION_DIV = "information";
     public static final String DESCRIPTION_PRODUCT_TEXT = "productText";
 
+  /**
+   * Parses the Document of the wed page & produces a populated ShoppingItem
+   * @param doc Document of the web page
+   * @return the calculated ShoppingItem
+   */
     public ShoppingDisplay parse(Document doc) {
         ShoppingDisplay result = new ShoppingDisplay();
 
@@ -43,6 +50,13 @@ public class ShoppingListParser {
     }
 
 
+  /**
+   * Creates a ShoppingItem from the product element & the unitPrice that is passed in.
+   *
+   * @param product an element from which to read the title, size & description
+   * @param unitPrice
+   * @return a fully populated ShoppingItem
+   */
     ShoppingItem getTitleSizeDescFromProductClass(Element product, BigDecimal unitPrice) {
         String title = "";
         String description = "";
@@ -76,9 +90,9 @@ public class ShoppingListParser {
     }
 
   /**
-   * Get the product descrion from the product URL
-   * @param url
-   * @return
+   * Get the product description from the product URL
+   * @param url the url from which to get the description
+   * @return the description
    */
     String getDescriptionFrom(URL url) {
 
@@ -99,22 +113,34 @@ public class ShoppingListParser {
         return result;
     }
 
+  /**
+   * Gets the price from a 'product' element
+   *
+   * @param product the element from which to read the price
+   * @return the calculated price
+   */
     BigDecimal getPriceFromProductClass(Element product) {
         Elements priceElement = product.getElementsByClass(PRICE_PER_UNIT);
         BigDecimal price = getPriceFromElementString(priceElement.text());
         return price;
     }
 
+  /**
+   * extracts the price from the string within the product element
+   *
+   * @param text full text from which to extract the price
+   * @return the extracted price
+   */
     BigDecimal getPriceFromElementString(String text) {
         Pattern p = Pattern.compile("[.0-9]+");
 
-        String text2 = null;
+        String strippedDownText = null;
         Matcher m = p.matcher(text);
         if (m.find()) {
-            text2 = m.group();
+            strippedDownText = m.group();
         }
 
-        BigDecimal result = new BigDecimal(text2).setScale(2, BigDecimal.ROUND_UP);;
+        BigDecimal result = new BigDecimal(strippedDownText).setScale(2, BigDecimal.ROUND_UP);;
         return result;
     }
 
