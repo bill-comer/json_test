@@ -12,7 +12,11 @@ public class SainsburyDemo {
     public static void main(String[] args) {
 
         String url = DEFAULT_URL;
-        boolean useTestFile = true;
+        boolean useTestFile = false;
+
+        if (args.length > 0) {
+            url = getUrlFromArgs(args);
+        }
 
         ShoppingDisplayLister shoppingDisplayLister = new ShoppingDisplayLister();
         try {
@@ -21,5 +25,9 @@ public class SainsburyDemo {
             e.printStackTrace();
         }
 
+    }
+
+    static String getUrlFromArgs(String[] args) {
+        return args[0];
     }
 }
