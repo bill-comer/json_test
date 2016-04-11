@@ -24,6 +24,9 @@ public class ShoppingListParser {
      */
     public static final String PRODUCT = "product";
     public static final String PRODUCT_INFO = "productInfo";
+    public static final String PRICE_PER_UNIT = "pricePerUnit";
+    public static final String DESCRIPTION_DIV = "information";
+    public static final String DESCRIPTION_PRODUCT_TEXT = "productText";
 
     public ShoppingDisplay parse(Document doc) {
         ShoppingDisplay result = new ShoppingDisplay();
@@ -56,6 +59,7 @@ public class ShoppingListParser {
             Element h3 = productInfo.select("h3").first();
             Element urlElement = h3.select("a").first();
             String prodUrl = urlElement.attr("href");
+
             try {
                 final URL url = new URL(prodUrl);
                 size = url.openConnection().getContentLength();
@@ -63,17 +67,19 @@ public class ShoppingListParser {
 
                 shoppingItem = ShoppingItem.create(title, size, description, unitPrice);
 
-
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException("URL[" + prodUrl + "] is not valid, error" + e.getMessage() + "]", e);
             }
-
-
         };
 
         return shoppingItem;
     }
 
+  /**
+   * Get the product descrion from the product URL
+   * @param url
+   * @return
+   */
     String getDescriptionFrom(URL url) {
 
         Document doc = null;
@@ -87,14 +93,14 @@ public class ShoppingListParser {
             e.printStackTrace();
         }
 
-        Element infoElement = doc.select("div#information").first();
-        Element descElement = infoElement.getElementsByClass("productText").first();
+        Element infoElement = doc.select("div#" + DESCRIPTION_DIV).first();
+        Element descElement = infoElement.getElementsByClass(DESCRIPTION_PRODUCT_TEXT).first();
         String result = descElement.text();
         return result;
     }
 
     BigDecimal getPriceFromProductClass(Element product) {
-        Elements priceElement = product.getElementsByClass("pricePerUnit");
+        Elements priceElement = product.getElementsByClass(PRICE_PER_UNIT);
         BigDecimal price = getPriceFromElementString(priceElement.text());
         return price;
     }
