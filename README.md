@@ -8,12 +8,13 @@ All other dependancies are contained within the created executable jar
      
 - compile & create executable jar (with dependancies)
     * mvn clean compile test assembly:single
+    * this will create a jar in the directory 'target' with a defined main class
     
 - to execute the program
         with a default URL of 'http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html'
-   * java -cp "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar" uk.co.beanfactory.sainsbury.SainsburyDemo
+   * java -jar "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar"
    
    
 - to execute the program
         but override the URL with 'http://foo.html'
-    * java -cp "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar" uk.co.beanfactory.sainsbury.SainsburyDemo http://foo.html
+    * java -cp "target\sainsbury-1.0-SNAPSHOT-jar-with-dependencies.jar" http://foo.html
