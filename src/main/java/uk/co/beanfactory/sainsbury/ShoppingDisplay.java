@@ -1,5 +1,6 @@
 package uk.co.beanfactory.sainsbury;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +10,12 @@ import java.util.List;
  */
 public class ShoppingDisplay {
     List<ShoppingItem> results;
-    Double total;
+    BigDecimal total;
 
 
     public ShoppingDisplay() {
         this.results = new ArrayList<>();
-        total = 0D;
+        total = BigDecimal.ZERO;
     }
 
     /*
@@ -25,11 +26,11 @@ public class ShoppingDisplay {
 
     public void addItem(ShoppingItem item) {
         results.add(item);
-        total += item.getUnit_price();
+        total = total.add(item.getUnit_price());
     }
 
 
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 }

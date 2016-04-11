@@ -1,5 +1,6 @@
 package uk.co.beanfactory.sainsbury;
 
+import java.math.BigDecimal;
 import java.net.URL;
 
 /**
@@ -8,7 +9,7 @@ import java.net.URL;
  */
 public class ShoppingItem {
     private String title;
-    private Double unit_price;
+    private BigDecimal unit_price;
     private String description;
     private String size;
 
@@ -36,20 +37,21 @@ public class ShoppingItem {
         this.description = description;
     }
 
-    public Double getUnit_price() {
+    public BigDecimal getUnit_price() {
         return unit_price;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unit_price = unitPrice;
     }
 
-    public static ShoppingItem create(String title, long size, String description, Double unitPrice) {
+    public static ShoppingItem create(String title, long size, String description, BigDecimal unitPrice) {
         ShoppingItem item = new ShoppingItem();
         item.title = title;
         item.setSize(size);
         item.description = description;
         item.unit_price = unitPrice;
+        item.unit_price.setScale(2, BigDecimal.ROUND_UP);
 
         return item;
     }

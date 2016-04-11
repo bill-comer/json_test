@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -21,7 +22,7 @@ public class ShoppingListParserTest {
     @Test
     public void getPriceFromString() {
         ShoppingListParser sut = new ShoppingListParser();
-        Double result = sut.getPriceFromElementString("&pound1.50/unit");
+        BigDecimal result = sut.getPriceFromElementString("&pound1.50/unit");
         assertNotNull(result);
         assertEquals("expected £1.50", new Double(1.50), result);
     }
@@ -48,7 +49,7 @@ public class ShoppingListParserTest {
         Element product = doc.getElementsByClass("product").first();
         ShoppingListParser sut = new ShoppingListParser();
 
-        ShoppingItem result = sut.getTitleSizeDescFromProductClass(product, 1.1);
+        ShoppingItem result = sut.getTitleSizeDescFromProductClass(product, BigDecimal.valueOf(1.1));
         assertNotNull(result);
         assertEquals("expected[" + "Sainsbury's Avocado Ripe & Ready XL Loose 300g" + "]", "Sainsbury's Avocado Ripe & Ready XL Loose 300g", result.getTitle());
 
@@ -61,7 +62,7 @@ public class ShoppingListParserTest {
         Element product = doc.getElementsByClass("product").first();
         ShoppingListParser sut = new ShoppingListParser();
 
-        Double result = sut.getPriceFromProductClass(product);
+        BigDecimal result = sut.getPriceFromProductClass(product);
 
         assertNotNull(result);
         assertEquals("", new Double(1.5), result);

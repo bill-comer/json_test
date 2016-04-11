@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,20 +16,20 @@ public class ShoppingItemTest {
 
     String title = "foo";
     String description = "foo_desc";
-    Double price = 1.23;
+    BigDecimal price = new BigDecimal("1.23");
     long size = 11000;
 
     @Before
     public void before() {
         title = "foo";
         description = "foo_desc";
-        price = 1.23;
+        price = BigDecimal.valueOf(1.23);
         size = 11000;
 
     }
 
     /**
-     * tests the {@link ShoppingItem#create(String, long, String, Double)} process
+     * tests the {@link ShoppingItem#create(String, long, String, BigDecimal)} process
      */
     @Test
     public void testCreate() {
@@ -75,7 +77,7 @@ public class ShoppingItemTest {
     @Test
     public void testEquals_difftPrice() {
         ShoppingItem item1 = ShoppingItem.create(title, size, description, price);
-        ShoppingItem item2 = ShoppingItem.create(title , size, description, new Double(999));
+        ShoppingItem item2 = ShoppingItem.create(title , size, description, new BigDecimal(999));
 
         assertNotEquals("they have difft prices", item1.equals(item2));
     }

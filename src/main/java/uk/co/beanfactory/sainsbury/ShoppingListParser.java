@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +30,7 @@ public class ShoppingListParser {
         Elements products = doc.getElementsByClass(PRODUCT);
 
         products.forEach( product -> {
-            Double unitPrice = getPriceFromProductClass(product);
+            BigDecimal unitPrice = getPriceFromProductClass(product);
             ShoppingItem item = getTitleSizeDescFromProductClass(product, unitPrice);
             result.addItem(item);
         } );
@@ -38,7 +39,7 @@ public class ShoppingListParser {
     }
 
 
-    ShoppingItem getTitleSizeDescFromProductClass(Element product, Double unitPrice) {
+    ShoppingItem getTitleSizeDescFromProductClass(Element product, BigDecimal unitPrice) {
         String title = "";
         String description = "";
         long size  ;
@@ -91,13 +92,13 @@ public class ShoppingListParser {
         return result;
     }
 
-    Double getPriceFromProductClass(Element product) {
+    BigDecimal getPriceFromProductClass(Element product) {
         Elements priceElement = product.getElementsByClass("pricePerUnit");
-        Double price = getPriceFromElementString(priceElement.text());
+        BigDecimal price = getPriceFromElementString(priceElement.text());
         return price;
     }
 
-    Double getPriceFromElementString(String text) {
+    BigDecimal getPriceFromElementString(String text) {
         Pattern p = Pattern.compile("[.0-9]+");
 
         String text2 = null;
@@ -106,8 +107,8 @@ public class ShoppingListParser {
             text2 = m.group();
         }
 
-        Double result = new Double(text2);
-        return  result;
+        BigDecimal result = new BigDecimal(text2).setScale(2, BigDecimal.ROUND_UP);;
+        return result;
     }
 
     private Document getTestFileProductInfoDoc() {

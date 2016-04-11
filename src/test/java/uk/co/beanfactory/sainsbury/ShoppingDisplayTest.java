@@ -6,6 +6,8 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
@@ -15,14 +17,14 @@ import static junit.framework.TestCase.assertTrue;
 public class ShoppingDisplayTest {
     String title = "foo";
     String description = "foo_desc";
-    Double price = 1.23;
+    BigDecimal price = BigDecimal.valueOf(1.23);
     long size = 11;
 
     @Before
     public void before() {
         title = "foo";
         description = "foo_desc";
-        price = 1.23;
+        price = BigDecimal.valueOf(1.23);
         size = 11;
 
     }
