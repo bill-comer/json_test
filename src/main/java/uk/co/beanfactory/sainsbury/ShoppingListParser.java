@@ -23,6 +23,7 @@ public class ShoppingListParser {
      * class name of products
      */
     public static final String PRODUCT = "product";
+    public static final String PRODUCT_INFO = "productInfo";
 
     public ShoppingDisplay parse(Document doc) {
         ShoppingDisplay result = new ShoppingDisplay();
@@ -45,7 +46,7 @@ public class ShoppingListParser {
         long size  ;
         ShoppingItem shoppingItem = null;
 
-        Element productInfo = product.getElementsByClass("productInfo").first();
+        Element productInfo = product.getElementsByClass(PRODUCT_INFO).first();
 
         if (productInfo != null) {
             if (productInfo.hasText()) {
