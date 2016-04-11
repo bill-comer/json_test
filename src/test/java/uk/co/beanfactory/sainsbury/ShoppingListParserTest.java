@@ -24,7 +24,7 @@ public class ShoppingListParserTest {
         ShoppingListParser sut = new ShoppingListParser();
         BigDecimal result = sut.getPriceFromElementString("&pound1.50/unit");
         assertNotNull(result);
-        assertEquals("expected £1.50", new Double(1.50), result);
+        assertEquals("expected £1.50", new BigDecimal(1.50).setScale(2, BigDecimal.ROUND_UP), result);
     }
 
 
@@ -65,7 +65,7 @@ public class ShoppingListParserTest {
         BigDecimal result = sut.getPriceFromProductClass(product);
 
         assertNotNull(result);
-        assertEquals("", new Double(1.5), result);
+        assertEquals("", new BigDecimal(1.5).setScale(2, BigDecimal.ROUND_UP), result);
     }
 
     @Test
