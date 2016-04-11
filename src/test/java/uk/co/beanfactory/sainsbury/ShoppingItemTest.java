@@ -14,14 +14,14 @@ import static org.junit.Assert.*;
  */
 public class ShoppingItemTest {
 
-    String title = "foo";
+    String title = "foo's banana";
     String description = "foo_desc";
     BigDecimal price = new BigDecimal("1.23");
     long size = 11000;
 
     @Before
     public void before() {
-        title = "foo";
+        title = "foo's banana";
         description = "foo_desc";
         price = BigDecimal.valueOf(1.23);
         size = 11000;
@@ -87,7 +87,7 @@ public class ShoppingItemTest {
     public void convertToJson_andBackAgain() {
         ShoppingItem item = ShoppingItem.create(title, size, description, price);
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
         String gsonItem = gson.toJson(item);
 

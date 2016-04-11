@@ -25,7 +25,7 @@ public class ShoppingDisplayLister {
         parser.useTestFile = useFile;
         ShoppingDisplay shoppingDisplay = parser.parse(doc);
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
         String gsonShoppingDisplay = gson.toJson(shoppingDisplay);
 
         System.out.println(gsonShoppingDisplay);
