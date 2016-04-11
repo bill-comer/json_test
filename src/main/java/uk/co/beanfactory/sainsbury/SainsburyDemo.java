@@ -1,5 +1,7 @@
 package uk.co.beanfactory.sainsbury;
 
+import uk.co.beanfactory.sainsbury.display.ShoppingDisplayLister;
+
 import java.io.IOException;
 
 /**

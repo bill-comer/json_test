@@ -1,7 +1,6 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.shopping;
 
 import java.math.BigDecimal;
-import java.net.URL;
 
 /**
  * Details of an individual item from a store display

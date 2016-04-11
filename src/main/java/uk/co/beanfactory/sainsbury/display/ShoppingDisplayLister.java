@@ -1,10 +1,12 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.display;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jsoup.Jsoup;
 
 import org.jsoup.nodes.Document;
+import uk.co.beanfactory.sainsbury.shopping.ShoppingDisplay;
+
 import java.io.File;
 import java.io.IOException;
 

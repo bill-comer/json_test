@@ -1,10 +1,12 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.display;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.junit.Test;
+import uk.co.beanfactory.sainsbury.display.ShoppingListParser;
+import uk.co.beanfactory.sainsbury.shopping.ShoppingDisplay;
+import uk.co.beanfactory.sainsbury.shopping.ShoppingItem;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,8 +39,8 @@ public class ShoppingListParserTest {
         ShoppingDisplay result = sut.parse(doc);
 
         assertNotNull("no ShoppingDisplay created", result);
-        assertNotNull(result.results);
-        assertTrue(" expected more than one  ShoppingItem", result.results.size() > 0);
+        assertNotNull(result.getResults());
+        assertTrue(" expected more than one  ShoppingItem", result.getResults().size() > 0);
     }
 
 

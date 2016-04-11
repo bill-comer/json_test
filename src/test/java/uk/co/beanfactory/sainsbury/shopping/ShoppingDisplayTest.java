@@ -1,10 +1,11 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.shopping;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import uk.co.beanfactory.sainsbury.shopping.ShoppingDisplay;
+import uk.co.beanfactory.sainsbury.shopping.ShoppingItem;
 
 import java.math.BigDecimal;
 

@@ -1,8 +1,9 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.display;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.Test;
+import uk.co.beanfactory.sainsbury.display.ShoppingDisplayLister;
 
 import java.io.IOException;
 

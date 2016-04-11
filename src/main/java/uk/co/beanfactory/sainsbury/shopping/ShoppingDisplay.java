@@ -1,4 +1,4 @@
-package uk.co.beanfactory.sainsbury;
+package uk.co.beanfactory.sainsbury.shopping;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,8 +28,11 @@ public class ShoppingDisplay {
         total = total.add(item.getUnitPrice());
     }
 
+  public List<ShoppingItem> getResults() {
+    return results;
+  }
 
-    public BigDecimal getTotal() {
+  public BigDecimal getTotal() {
         return total;
     }
 }
