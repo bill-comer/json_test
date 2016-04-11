@@ -18,12 +18,6 @@ public class ShoppingDisplay {
         total = BigDecimal.ZERO;
     }
 
-    /*
-    public List<ShoppingItem> getResults() {
-        return results;
-    }
-    */
-
     public void addItem(ShoppingItem item) {
         results.add(item);
         total = total.add(item.getUnitPrice());
