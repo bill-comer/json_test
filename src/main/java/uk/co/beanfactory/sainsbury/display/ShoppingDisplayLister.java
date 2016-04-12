@@ -16,7 +16,7 @@ import java.io.IOException;
 public class ShoppingDisplayLister {
 
     /**
-     * reteives the shopping items from a URL or file & displays the results to Standard out.
+     * retrieves the shopping items from a URL or file & displays the results to Standard out.
      * @param url - the URL to get the shopping list from
      * @param useFile - if true then a local test copy of the web page is used
      */
