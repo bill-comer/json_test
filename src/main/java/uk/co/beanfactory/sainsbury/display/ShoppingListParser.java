@@ -19,9 +19,14 @@ import java.util.regex.Pattern;
  *
  * Created by bill on 09/04/2016.
  */
-public class ShoppingListParser {
+public class ShoppingListParser implements ShoppingParser{
 
-    boolean useTestFile = false;
+  boolean useTestFile = false;
+  @Override
+  public void setUseTestFile(boolean useTestFile) {
+    this.useTestFile = useTestFile;
+  }
+
 
     /**
      * class name of products
@@ -37,6 +42,7 @@ public class ShoppingListParser {
    * @param doc Document of the web page
    * @return the calculated ShoppingItem
    */
+    @Override
     public ShoppingDisplay parse(Document doc) {
         ShoppingDisplay result = new ShoppingDisplay();
 

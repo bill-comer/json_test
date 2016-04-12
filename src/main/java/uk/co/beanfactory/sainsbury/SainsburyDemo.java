@@ -1,6 +1,8 @@
 package uk.co.beanfactory.sainsbury;
 
 import uk.co.beanfactory.sainsbury.display.ShoppingDisplayLister;
+import uk.co.beanfactory.sainsbury.display.ShoppingLister;
+import uk.co.beanfactory.sainsbury.display.ShoppingListerCreator;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -31,7 +33,7 @@ public class SainsburyDemo {
         }
 
 
-        ShoppingDisplayLister shoppingDisplayLister = new ShoppingDisplayLister();
+        ShoppingLister shoppingDisplayLister = ShoppingListerCreator.create();
         try {
             shoppingDisplayLister.listItems(url, useTestFile);
         } catch (IOException e) {

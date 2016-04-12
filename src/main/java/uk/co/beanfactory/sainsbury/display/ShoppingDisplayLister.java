@@ -13,18 +13,26 @@ import java.io.IOException;
 /**
  * Created by bill on 09/04/2016.
  */
-public class ShoppingDisplayLister {
+public class ShoppingDisplayLister implements ShoppingLister{
+
+
+  ShoppingParser parser;
+  @Override
+  public void setParser(ShoppingParser parser) {
+    this.parser = parser;
+  }
+
 
     /**
      * retrieves the shopping items from a URL or file & displays the results to Standard out.
      * @param url - the URL to get the shopping list from
      * @param useFile - if true then a local test copy of the web page is used
      */
+    @Override
     public void listItems(String url, boolean useFile) throws IOException {
 
         Document doc = getDocument(url, useFile);
-        ShoppingListParser parser = new ShoppingListParser();
-        parser.useTestFile = useFile;
+        parser.setUseTestFile(useFile);
         ShoppingDisplay shoppingDisplay = parser.parse(doc);
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
