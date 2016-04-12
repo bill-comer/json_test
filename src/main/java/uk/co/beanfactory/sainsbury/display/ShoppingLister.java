@@ -12,26 +12,26 @@ import java.io.IOException;
  */
 public interface ShoppingLister {
 
-  void setParser(ShoppingParser parser);
-  ShoppingParser getParser();
+    void setParser(ShoppingParser parser);
 
-  Document getDocument(String url) throws IOException ;
+    ShoppingParser getParser();
 
-  /**
-   * retrieves the shopping items from a URL or file & displays the results to Standard out.
-   * @param url - the URL to get the shopping list from
-   */
-  default String listItems(String url) throws IOException {
+    Document getDocument(String url) throws IOException;
 
-    Document doc = getDocument(url);
-    ShoppingDisplay shoppingDisplay = getParser().parse(doc);
+    /**
+     * retrieves the shopping items from a URL or file & displays the results to Standard out.
+     *
+     * @param url - the URL to get the shopping list from
+     */
+    default String listItems(String url) throws IOException {
 
-    Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-    String gsonShoppingDisplay = gson.toJson(shoppingDisplay);
+        Document doc = getDocument(url);
+        ShoppingDisplay shoppingDisplay = getParser().parse(doc);
 
-    System.out.println(gsonShoppingDisplay);
-    return gsonShoppingDisplay;
-  }
+        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
+        String gsonShoppingDisplay = gson.toJson(shoppingDisplay);
 
-
+        System.out.println(gsonShoppingDisplay);
+        return gsonShoppingDisplay;
+    }
 }

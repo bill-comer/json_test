@@ -27,7 +27,6 @@ public class ShoppingDisplayTest {
         description = "foo_desc";
         price = BigDecimal.valueOf(1.23);
         size = 11;
-
     }
 
 
@@ -37,11 +36,9 @@ public class ShoppingDisplayTest {
 
         ShoppingDisplay shoppingDisplay = new ShoppingDisplay();
         shoppingDisplay.addItem(item1);
-        //shoppingDisplay.setTotal(99D);
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
-               // .registerTypeAdapter(ShoppingDisplay.class, new ShoppingDisplayDeserializer())
                 .create();
         String gsonItem = gson.toJson(shoppingDisplay);
 
@@ -53,7 +50,7 @@ public class ShoppingDisplayTest {
         assertTrue("there should be one results", convertedDisplay.results.size() == 1);
 
         ShoppingItem convertedItem = convertedDisplay.results.get(0);
-        assertTrue("convertedItem should be same as created item" , convertedItem.equals(item1));
+        assertTrue("convertedItem should be same as created item", convertedItem.equals(item1));
 
         System.out.println(gsonItem);
     }

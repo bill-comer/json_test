@@ -30,7 +30,6 @@ public class ShoppingListParserTest {
     }
 
 
-
     @Test
     public void getShoppingList() {
         Document doc = getTestFileProductDoc();
@@ -42,7 +41,6 @@ public class ShoppingListParserTest {
         assertNotNull(result.getResults());
         assertTrue(" expected more than one  ShoppingItem", result.getResults().size() > 0);
     }
-
 
 
     @Test

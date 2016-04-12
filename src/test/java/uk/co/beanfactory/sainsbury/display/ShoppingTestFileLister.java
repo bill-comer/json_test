@@ -3,17 +3,18 @@ package uk.co.beanfactory.sainsbury.display;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import javax.print.Doc;
 import java.io.File;
 import java.io.IOException;
 
 /**
+ * Test utility class to get the product data from a file instead of from a URL on the web.
  * Created by bill on 12/04/2016.
  */
 public class ShoppingTestFileLister implements ShoppingLister {
 
 
-    ShoppingParser parser ;
+    ShoppingParser parser;
+
     @Override
     public void setParser(ShoppingParser parser) {
 

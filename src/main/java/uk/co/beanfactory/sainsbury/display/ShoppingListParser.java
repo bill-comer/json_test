@@ -39,6 +39,4 @@ public class ShoppingListParser implements ShoppingParser {
 
         return getDescriptionFromDoc(doc);
     }
-
-
 }

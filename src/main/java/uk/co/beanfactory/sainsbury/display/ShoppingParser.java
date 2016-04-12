@@ -120,6 +120,11 @@ public interface ShoppingParser {
         return shoppingItem;
     }
 
+    /**
+     * gets the item description from the document
+     * @param doc
+     * @return
+     */
     default String getDescriptionFromDoc(Document doc) {
         Element infoElement = doc.select("div#" + DESCRIPTION_DIV).first();
         Element descElement = infoElement.getElementsByClass(DESCRIPTION_PRODUCT_TEXT).first();

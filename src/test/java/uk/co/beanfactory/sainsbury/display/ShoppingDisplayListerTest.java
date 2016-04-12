@@ -26,7 +26,7 @@ public class ShoppingDisplayListerTest {
         assertNotNull("failed to find file", doc);
         Elements productLister = doc.getElementsByClass("productLister");
         assertNotNull("could not see productLister class", productLister);
-        assertTrue(productLister.size()>0);
+        assertTrue(productLister.size() > 0);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ShoppingDisplayListerTest {
         String results = sut.listItems(null);
 
         assertTrue("no results section", results.contains("\"results\": ["));
-        assertTrue("no total", results.contains("\"total\": 15.10") );
+        assertTrue("no total", results.contains("\"total\": 15.10"));
         assertTrue(results.contains("\"title\": \"Sainsbury's Apricot"));
 
         int count = StringUtils.countMatches(results, "\"title\": \"Sainsbury's ");

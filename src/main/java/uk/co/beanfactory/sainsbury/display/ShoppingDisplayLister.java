@@ -13,14 +13,15 @@ import java.io.IOException;
 /**
  * Created by bill on 09/04/2016.
  */
-public class ShoppingDisplayLister implements ShoppingLister{
+public class ShoppingDisplayLister implements ShoppingLister {
 
 
-  ShoppingParser parser;
-  @Override
-  public void setParser(ShoppingParser parser) {
-    this.parser = parser;
-  }
+    ShoppingParser parser;
+
+    @Override
+    public void setParser(ShoppingParser parser) {
+        this.parser = parser;
+    }
 
     @Override
     public ShoppingParser getParser() {
@@ -30,6 +31,7 @@ public class ShoppingDisplayLister implements ShoppingLister{
 
     /**
      * Gets a Document from the URL
+     *
      * @param url
      * @return
      */
@@ -37,7 +39,4 @@ public class ShoppingDisplayLister implements ShoppingLister{
     public Document getDocument(String url) throws IOException {
         return Jsoup.connect(url).get();
     }
-
-
-
 }

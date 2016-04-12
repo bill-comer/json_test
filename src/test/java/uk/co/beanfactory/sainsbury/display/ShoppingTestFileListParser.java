@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * Test class that gets the product from a file instead of from an external URL
  * Created by bill on 12/04/2016.
  */
 public class ShoppingTestFileListParser implements ShoppingParser {

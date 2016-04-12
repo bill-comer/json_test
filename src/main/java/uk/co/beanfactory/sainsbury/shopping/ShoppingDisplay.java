@@ -18,21 +18,21 @@ public class ShoppingDisplay {
         total = BigDecimal.ZERO;
     }
 
-  /**
-   * Adds an item to the list & increases the total appropiately.
-   *
-   * @param item
-   */
-  public void addItem(ShoppingItem item) {
+    /**
+     * Adds an item to the list & increases the total appropiately.
+     *
+     * @param item
+     */
+    public void addItem(ShoppingItem item) {
         results.add(item);
         total = total.add(item.getUnitPrice());
     }
 
-  public List<ShoppingItem> getResults() {
-    return results;
-  }
+    public List<ShoppingItem> getResults() {
+        return results;
+    }
 
-  public BigDecimal getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 }

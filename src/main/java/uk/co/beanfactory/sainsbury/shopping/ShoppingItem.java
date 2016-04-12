@@ -25,7 +25,7 @@ public class ShoppingItem {
     }
 
     public void setSize(long size) {
-        this.size = String.valueOf(size/1000L) + "Kb";
+        this.size = String.valueOf(size / 1000L) + "Kb";
     }
 
     public String getDescription() {

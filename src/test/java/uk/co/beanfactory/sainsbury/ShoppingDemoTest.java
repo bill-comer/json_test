@@ -13,36 +13,36 @@ import static org.junit.Assert.assertTrue;
  */
 public class ShoppingDemoTest {
 
-  @Test
-  public void testUrl_invalid() {
+    @Test
+    public void testUrl_invalid() {
 
-    String url = "//www.google.com";
-    assertFalse("Url[" + url + "] should be invalid",SainsburyDemo.isUrlValid(url));
-  }
+        String url = "//www.google.com";
+        assertFalse("Url[" + url + "] should be invalid", SainsburyDemo.isUrlValid(url));
+    }
 
-  @Test
-  public void testUrl_valid() {
+    @Test
+    public void testUrl_valid() {
 
-    String url = "http://www.google.com";
-    assertTrue("Url[" + url + "] should be valid",SainsburyDemo.isUrlValid(url));
-  }
+        String url = "http://www.google.com";
+        assertTrue("Url[" + url + "] should be valid", SainsburyDemo.isUrlValid(url));
+    }
 
-  @Test
-  public void getUrlFromArgs() {
-    String[] args  = {"-url=Foo","-test"};
+    @Test
+    public void getUrlFromArgs() {
+        String[] args = {"-url=Foo", "-test"};
 
-    String url = SainsburyDemo.getUrlFromArgs(args);
-    assertNotNull(url);
-    assertEquals("Foo", url);
-  }
+        String url = SainsburyDemo.getUrlFromArgs(args);
+        assertNotNull(url);
+        assertEquals("Foo", url);
+    }
 
-  @Test
-  public void getUrlFromArgs_incorrectFormat() {
-    String[] args  = {"-udrl=Foo","-test"};
+    @Test
+    public void getUrlFromArgs_incorrectFormat() {
+        String[] args = {"-udrl=Foo", "-test"};
 
-    String url = SainsburyDemo.getUrlFromArgs(args);
-    assertNotNull(url);
-    assertEquals(SainsburyDemo.DEFAULT_URL, url);
-  }
+        String url = SainsburyDemo.getUrlFromArgs(args);
+        assertNotNull(url);
+        assertEquals(SainsburyDemo.DEFAULT_URL, url);
+    }
 
 }

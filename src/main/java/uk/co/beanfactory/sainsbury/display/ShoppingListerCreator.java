@@ -5,16 +5,17 @@ package uk.co.beanfactory.sainsbury.display;
  */
 public class ShoppingListerCreator {
 
-  /**
-   * Manual injection
-   * @return
-   */
-  public static ShoppingLister create() {
+    /**
+     * Manual injection
+     *
+     * @return
+     */
+    public static ShoppingLister create() {
 
-    ShoppingLister lister = new ShoppingDisplayLister();
-    ShoppingParser parser = new ShoppingListParser();
+        ShoppingLister lister = new ShoppingDisplayLister();
+        ShoppingParser parser = new ShoppingListParser();
 
-    lister.setParser(parser);
-    return lister;
-  }
+        lister.setParser(parser);
+        return lister;
+    }
 }

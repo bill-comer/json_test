@@ -39,7 +39,7 @@ public class SainsburyDemo {
         }
     }
 
-    static boolean isUrlValid(String url){
+    static boolean isUrlValid(String url) {
 
         url = url.replaceFirst("^https", "http"); // Otherwise an exception may be thrown on invalid SSL certificates.
         int timeout = 500;
@@ -63,11 +63,11 @@ public class SainsburyDemo {
         String[] url = new String[0];
         for (String arg : args) {
             if (arg.startsWith(URL_OPTION)) {
-                 url = arg.split(URL_OPTION);
+                url = arg.split(URL_OPTION);
             }
         }
 
-        if (url.length>1) {
+        if (url.length > 1) {
             return url[1];
         } else {
             System.out.println("\nNB: using default url\n");
