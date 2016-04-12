@@ -73,8 +73,7 @@ public class ShoppingListParserTest {
     @Test
     public void getDescription() {
 
-        ShoppingListParser sut = new ShoppingListParser();
-        sut.useTestFile = true;
+        ShoppingParser sut = new ShoppingTestFileListParser();
         String result = sut.getDescriptionFrom(null);
 
         assertEquals("Avocados", result);

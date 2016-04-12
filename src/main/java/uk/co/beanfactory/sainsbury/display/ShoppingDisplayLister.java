@@ -22,59 +22,22 @@ public class ShoppingDisplayLister implements ShoppingLister{
     this.parser = parser;
   }
 
-
-    /**
-     * retrieves the shopping items from a URL or file & displays the results to Standard out.
-     * @param url - the URL to get the shopping list from
-     * @param useFile - if true then a local test copy of the web page is used
-     */
     @Override
-    public void listItems(String url, boolean useFile) throws IOException {
-
-        Document doc = getDocument(url, useFile);
-        parser.setUseTestFile(useFile);
-        ShoppingDisplay shoppingDisplay = parser.parse(doc);
-
-        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-        String gsonShoppingDisplay = gson.toJson(shoppingDisplay);
-
-        System.out.println(gsonShoppingDisplay);
-
+    public ShoppingParser getParser() {
+        return parser;
     }
 
+
     /**
-     * Gets a Document from the URL or from a test file if useFile == true
+     * Gets a Document from the URL
      * @param url
-     * @param useFile test facility - grabs local copy of a shopping web page
      * @return
      */
-    public Document getDocument(String url, boolean useFile) throws IOException {
-        Document doc = null;
-        if (useFile) {
-            doc = getTestFileDocument(doc);
-        } else {
-            doc = getShoppingDisplayDocument(url);
-        }
-        return doc;
-    }
-
-    private Document getShoppingDisplayDocument(String url) throws IOException {
+    @Override
+    public Document getDocument(String url) throws IOException {
         return Jsoup.connect(url).get();
     }
 
-    private Document getTestFileDocument(Document doc) {
-            String sainsburyHtmlFileName = "sainsbury.html";
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(sainsburyHtmlFileName).getFile());
-            if (file == null || !file.exists()) {
-                throw new RuntimeException("no file[" + sainsburyHtmlFileName + "] found");
-            }
 
-            try {
-                doc = Jsoup.parse(file, "UTF-8", "");
-            } catch (IOException ioe) {
-                throw new RuntimeException("Failed to parse file[" + sainsburyHtmlFileName + "]");
-            }
-        return doc;
-    }
+
 }

@@ -15,12 +15,10 @@ public class SainsburyDemo {
 
     public static String DEFAULT_URL = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
     public static String URL_OPTION = "-url=";
-    public static String TEST_OPTION = "-test";
 
     public static void main(String[] args) {
 
         String url = DEFAULT_URL;
-        boolean useTestFile = false;
 
         if (args.length > 0) {
             url = getUrlFromArgs(args);
@@ -35,7 +33,7 @@ public class SainsburyDemo {
 
         ShoppingLister shoppingDisplayLister = ShoppingListerCreator.create();
         try {
-            shoppingDisplayLister.listItems(url, useTestFile);
+            shoppingDisplayLister.listItems(url);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,7 +42,7 @@ public class SainsburyDemo {
     static boolean isUrlValid(String url){
 
         url = url.replaceFirst("^https", "http"); // Otherwise an exception may be thrown on invalid SSL certificates.
-        int timeout = 200;
+        int timeout = 500;
 
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
