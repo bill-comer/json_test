@@ -1,7 +1,9 @@
 # json_test
 
-The code is built using Java8 & needs java8 on your classpath.
-All other dependancies are contained within the created executable jar
+- Dependancies
+* The code is built using Java8 & needs java8 on your classpath.
+* Compile & testing is run using maven
+* All other dependancies are contained within the created executable jar
 
 - tests only
      * mvn clean compile test
